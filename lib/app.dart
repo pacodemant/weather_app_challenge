@@ -14,10 +14,15 @@ class WeatherAppChallenge extends StatelessWidget {
       title: 'Weather App',
       theme: ThemeData(
         primarySwatch: Colors.blue, // Farbpalette für die App
-        scaffoldBackgroundColor: Colors.blueGrey[200], // Hintergrundfarbe der App
-        // Weitere Designeinstellungen...
+        scaffoldBackgroundColor:
+            Colors.blueGrey[200], // Hintergrundfarbe der App
       ),
-      home: const HomePage(),
+      home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blueGrey[400],
+            title: const Text('Il Tempo senza Pulsante'),
+          ),
+          body: const HomePage()),
     );
   }
 }

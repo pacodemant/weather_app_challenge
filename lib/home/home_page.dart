@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/home/repositories/weather_repository.dart';
 import 'package:weather_app/home/models/weather.dart';
 
+
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
@@ -22,25 +23,33 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _fetchWeather(String city) {
-    setState(() {
-      _isLoading = true;
-    });
+    setState(
+      () {
+        _isLoading = true;
+      },
+    );
 
     WeatherRepository().getWeather(city).then(
       (weather) {
-        setState(() {
-          _weather = weather;
-          _isLoading = false;
-          _cityEntered = true;
-        });
+        setState(
+          () {
+            _weather = weather;
+            _isLoading = false;
+            _cityEntered = true;
+          },
+        );
       },
-    ).catchError((error) {
-      setState(() {
-        _isLoading = false;
-        _cityEntered = true;
-      });
-      _showErrorSnackBar(city);
-    });
+    ).catchError(
+      (error) {
+        setState(
+          () {
+            _isLoading = false;
+            _cityEntered = true;
+          },
+        );
+        _showErrorSnackBar(city);
+      },
+    );
   }
 
   void _showErrorSnackBar(String city) {
@@ -54,12 +63,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[400],
-        title: const Text('Weather Button'),
-      ),
-      body: Padding(
+    return Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
@@ -112,8 +116,8 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    
   }
 
   @override

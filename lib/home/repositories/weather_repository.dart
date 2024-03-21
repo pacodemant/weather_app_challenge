@@ -23,7 +23,7 @@ class WeatherRepository {
         return Weather.fromJson(jsonData);
       } else {
         // Stadt nicht gefunden, daher geben wir null zurück
-        print('Stadt nicht gefunden: $city');
+        print('Stadt nicht gefunden: $city - ${response.body}');
         return null;
       }
     } catch (e) {
